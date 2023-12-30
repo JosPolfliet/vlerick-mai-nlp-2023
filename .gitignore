@@ -1,4 +1,4 @@
-
+[2022-2023]/
 nlp-demystified/
 
 .ipynb_checkpoints/
@@ -6,3 +6,5 @@ nlp-demystified/
 .DS_Store
 
 DATA/
+.env
+preparation files/
