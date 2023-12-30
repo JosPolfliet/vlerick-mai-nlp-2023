@@ -13,7 +13,12 @@ tqdm.pandas()
 
 punctuations = string.punctuation
 
-nlp = spacy.load("en_core_web_md")
+try:
+  nlp = spacy.load("en_core_web_md")
+except:
+  spacy.cli.download("en_core_web_md")
+  nlp = spacy.load("en_core_web_md")
+
 stop_words = spacy.lang.en.stop_words.STOP_WORDS
 
 
