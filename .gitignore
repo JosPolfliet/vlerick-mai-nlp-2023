@@ -5,7 +5,7 @@ nlp-demystified/
 
 .DS_Store
 
-DATA/
+# DATA/
 .env
 preparation files/
 
