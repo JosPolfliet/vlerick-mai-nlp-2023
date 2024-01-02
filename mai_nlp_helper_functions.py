@@ -12,15 +12,8 @@ from tqdm import tqdm
 tqdm.pandas()
 
 punctuations = string.punctuation
-
-try:
-  nlp = spacy.load("en_core_web_md")
-except:
-  spacy.cli.download("en_core_web_md")
-  nlp = spacy.load("en_core_web_md")
-
-stop_words = spacy.lang.en.stop_words.STOP_WORDS
-
+nlp = None
+stop_words = None
 
 def spacy_tokenizer(sentence):
     """
@@ -31,6 +24,17 @@ def spacy_tokenizer(sentence):
     - mytokens: list, the list of tokens
     """
     # Creating our token object, which is used to create documents with linguistic annotations.
+    global nlp
+    global stop_words
+    if not nlp:
+        try:
+            nlp = spacy.load("en_core_web_md")
+            stop_words = spacy.lang.en.stop_words.STOP_WORDS
+        except:
+            spacy.cli.download("en_core_web_md")
+            nlp = spacy.load("en_core_web_md")
+            stop_words = spacy.lang.en.stop_words.STOP_WORDS
+
     tokens = nlp(sentence["text"].lower())
 
     # Remove OOV words
